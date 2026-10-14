@@ -19,7 +19,7 @@ nav ul{display:flex;gap:22px;list-style:none;font:500 11px "JetBrains Mono"}nav 
 .gauge{width:120px;height:4px;background:#333;margin-top:6px}.gauge div{height:100%;background:linear-gradient(90deg,var(--gold),var(--red))}
 #story{height:500vh;position:relative}#stage{position:sticky;top:0;height:100vh;overflow:hidden}
 #gl{position:absolute;inset:0;width:100%;height:100%}
-#fb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(60vw,420px);display:none}
+#fbx{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(60vw,420px);display:none}
 .brand{position:absolute;left:0;right:0;top:16vh;text-align:center;pointer-events:none;z-index:2}
 .chrome{font:700 clamp(54px,13vw,210px)/.85 "Chakra Petch";letter-spacing:-.02em;background:linear-gradient(180deg,#fff 0%,#e9d7b0 30%,#7a5a2a 50%,#f7e6c0 62%,#a0782f 80%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(200,16,46,.35));opacity:.92}
 .sub{font:500 12px "JetBrains Mono";letter-spacing:.4em;color:var(--gold);margin-top:14px}
@@ -46,6 +46,22 @@ h2{font-size:clamp(36px,6vw,84px);line-height:.95;margin-bottom:40px}h2 em{font-
 footer{padding:10vh 6vw 6vh;border-top:1px solid var(--line);color:var(--mut);font-size:13px;line-height:1.7}footer .chrome{font-size:clamp(40px,10vw,140px)}
 .note{margin-top:30px;padding:14px 18px;border:1px dashed var(--gold);color:var(--gold);font:500 12px "JetBrains Mono"}
 @media(max-width:800px){nav ul{display:none}.cust,.proc{grid-template-columns:1fr}.det{grid-template-columns:1fr 1fr}.br{display:none}}
+
+.world{position:absolute;left:0;top:0;width:100%;will-change:transform}
+#rose{position:absolute;left:50%;height:64vh;transform:translateX(-50%);filter:drop-shadow(0 30px 60px rgba(200,16,46,.35));will-change:transform,filter}
+#rose img{height:100%;display:block;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent);animation:fl 6s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-14px) rotate(1.5deg)}}
+#plate{position:absolute;left:50%;transform:translateX(-50%);}
+#plate img{width:100%;display:block;transform:scaleY(.42);transform-origin:50% 50%;filter:drop-shadow(0 40px 30px rgba(0,0,0,.8)) brightness(.95)}
+#plate:before{content:"";position:absolute;inset:20% -10%;background:radial-gradient(ellipse,rgba(216,180,106,.28),transparent 65%);filter:blur(10px)}
+.pet{position:absolute;left:0;top:0;width:70px;transform-origin:50% 50%;will-change:transform,opacity,filter;pointer-events:none}
+#stage{perspective:1200px}
+.card .art{height:240px;padding:0;overflow:hidden;background:none}.card .art img{width:100%;height:100%;object-fit:cover;transition:transform .8s}.card:hover .art img{transform:scale(1.07)}
+.pod{overflow:hidden}.pod img{position:absolute;transition:all .6s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 20px 30px rgba(0,0,0,.6))}
+.sw button{background-size:cover!important;background-position:center!important}
+.proc .ph{width:min(40vw,520px);aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);margin-top:30px;filter:saturate(1.05) contrast(1.05)}
+.det .pic{padding:0;overflow:hidden;min-height:220px}.det .pic img{width:100%;height:100%;object-fit:cover;transition:transform .8s}.det .pic:hover img{transform:scale(1.08)}
+.credits{margin-top:24px;font-size:11px;line-height:1.6;color:#6f625e}.credits a{color:#8f807a}
 </style></head><body>
 <nav><div class="logo">ROSÉ ATELIER<small>FLORISTIK · SEIT 2026</small></div><ul><li><a href="#sortiment">Sortiment</a></li><li><a href="#builder">Strauß-Builder</a></li><li><a href="#pflege">Pflege</a></li><li><a href="#kontakt">Kontakt</a></li></ul><div class="mono" style="font-size:11px;letter-spacing:.2em">MENÜ ☰</div></nav>
 <div class="hud"><div class="grid"></div><i></i><i></i><i></i><i></i><div class="cross"></div>
@@ -53,123 +69,91 @@ footer{padding:10vh 6vw 6vh;border-top:1px solid var(--line);color:var(--mut);fo
 <div class="bl">LEVEL<div class="meter" id="meter"></div></div>
 <div class="br">LUFTFEUCHTE <span id="hum">68</span>%<br>TEMP <span id="tmp">6.0</span>°C<div class="gauge"><div id="gg" style="width:40%"></div></div></div></div>
 
-<section id="story"><div id="stage"><canvas id="gl"></canvas>
-<svg id="fb" viewBox="0 0 200 260"><path d="M100 120 C98 170 102 210 100 255" stroke="#2f6b2a" stroke-width="5" fill="none"/><path d="M100 190 q-40 -10 -50 -35 q35 0 50 30z" fill="#3a7d32"/><g fill="#b0102a"><ellipse cx="100" cy="90" rx="55" ry="45"/><ellipse cx="78" cy="80" rx="30" ry="38" fill="#d01836"/><ellipse cx="122" cy="80" rx="30" ry="38" fill="#c3122f"/><ellipse cx="100" cy="72" rx="22" ry="30" fill="#8e0a20"/></g><ellipse cx="100" cy="250" rx="70" ry="10" fill="#eee"/></svg>
+<section id="story"><div id="stage">
 <div class="brand"><div class="chrome">ROSÉ</div><div class="sub">ATELIER · HANDGEBUNDEN IN DEUTSCHLAND</div></div>
+<div class="world" id="world"><div id="rose"><img src="img/hero-rose.webp" alt="Rote Rose"></div><div id="plate"><img src="img/plate.webp" alt="Porzellanteller"></div></div>
 <div class="cap" id="cap"><div class="kick">01 / BLÜTE</div><h3 id="capH">Eine Rose. Ganz.</h3><p id="capP">Scrollen Sie – und erleben Sie, wie jedes Blütenblatt seinen Weg findet.</p></div>
 </div></section>
 
 <section class="blk" id="sortiment"><div class="kick">02 / SORTIMENT</div><h2>Sträuße mit <em>Haltung</em></h2><div class="car" id="car"></div></section>
 
 <section class="blk" id="builder"><div class="kick">03 / STRAUSS-BUILDER</div><h2>Ihr Strauß. <em>Live.</em></h2>
-<div class="cust"><div class="pod"><canvas id="gl2"></canvas></div><div>
-<div class="opt"><label>FARBE</label><div class="sw" id="sw"></div></div>
+<div class="cust"><div class="pod" id="pod"></div><div>
+<div class="opt"><label>FARBE · <span id="cname">ROT</span></label><div class="sw" id="sw"></div></div>
 <div class="opt"><label>ANZAHL ROSEN</label><div class="cnt" id="cnt"></div></div>
-<div class="opt"><label>PREIS (KONZEPT)</label><div class="total" id="total">€ 49</div></div></div></div></section>
+<div class="opt"><label>PREIS (KONZEPT)</label><div class="total" id="total">€ 9</div></div></div></div></section>
 
-<section id="pflege"><div class="blk proc"><div class="big" data-n="1">0</div><div><div class="kick">PFLEGE · SCHRITT 1</div><h2>Schräg <em>anschneiden</em></h2><p>Stiele 2 cm schräg mit scharfem Messer kürzen – so trinkt die Rose optimal.</p></div></div>
-<div class="blk proc"><div class="big" data-n="2">0</div><div><div class="kick">PFLEGE · SCHRITT 2</div><h2>Frisches <em>Wasser</em></h2><p>Lauwarmes Wasser, alle zwei Tage wechseln. Blätter unter der Wasserlinie entfernen.</p></div></div>
-<div class="blk proc"><div class="big" data-n="7">0</div><div><div class="kick">PFLEGE · ERGEBNIS</div><h2>Tage <em>Frische</em></h2><p>Mindestens sieben Tage Haltbarkeit – bei kühlem Standort ohne direkte Sonne.</p></div></div></section>
+<section id="pflege"><div class="blk proc"><div><div class="big" data-n="1">0</div><img class="ph" src="img/care1.jpg" alt="Rote Rose"></div><div><div class="kick">PFLEGE · SCHRITT 1</div><h2>Schräg <em>anschneiden</em></h2><p>Stiele 2 cm schräg mit scharfem Messer kürzen – so trinkt die Rose optimal.</p></div></div>
+<div class="blk proc"><div><div class="big" data-n="2">0</div><img class="ph" src="img/care2.jpg" alt="Rose Nahaufnahme"></div><div><div class="kick">PFLEGE · SCHRITT 2</div><h2>Frisches <em>Wasser</em></h2><p>Lauwarmes Wasser, alle zwei Tage wechseln. Blätter unter der Wasserlinie entfernen.</p></div></div>
+<div class="blk proc"><div><div class="big" data-n="7">0</div><img class="ph" src="img/care3.jpg" alt="Rosenblätter"></div><div><div class="kick">PFLEGE · ERGEBNIS</div><h2>Tage <em>Frische</em></h2><p>Mindestens sieben Tage Haltbarkeit – und danach duften die Blütenblätter noch als Dekoration weiter.</p></div></div></section>
 
 <section class="blk"><div class="kick">04 / DETAILS</div><h2>Das <em>Atelier</em></h2><div class="det" id="det"></div></section>
 
 <footer id="kontakt"><div class="chrome">ATELIER</div><p style="margin-top:24px">Muster-Floristik · Musterstraße 1 · 12345 Musterstadt · Mo–Sa 9–19 Uhr</p>
-<div class="note">Hinweis: Unverbindlicher Konzept-Entwurf (kein Kundenprojekt). Name, Texte, Preise und Adressen sind fiktive Platzhalter. Entwurf: Mohammad, 015738338427</div></footer>
-
+<div class="note">Hinweis: Unverbindlicher Konzept-Entwurf (kein Kundenprojekt). Name, Texte, Preise und Adressen sind fiktive Platzhalter. Entwurf: Mohammad, 015738338427</div>
+<div class="credits" id="credits"></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 window.P=0;
-const rs=(c)=>`<svg width="120" height="150" viewBox="0 0 200 260"><path d="M100 120 C98 170 102 210 100 255" stroke="#2f6b2a" stroke-width="5" fill="none"/><ellipse cx="100" cy="90" rx="55" ry="45" fill="${c}"/><ellipse cx="80" cy="80" rx="30" ry="38" fill="${c}" opacity=".8"/><ellipse cx="120" cy="80" rx="30" ry="38" fill="${c}" opacity=".9"/><ellipse cx="100" cy="72" rx="22" ry="30" fill="#000" opacity=".25"/></svg>`;
-const B=[["Rouge Classique","12 rote Rosen, Eukalyptus",59,"#b0102a"],["Blush Poème","Rosé-Rosen & Schleierkraut",49,"#e8a0a8"],["Velvet Noir","Dunkle Baccara-Rosen",79,"#5a0612"],["Champagne","Cremerosen & Gold-Seide",69,"#ead7b0"],["Amour Box","Rosen in schwarzer Hutschachtel",99,"#c8102e"],["Mini Bouquet","3 Rosen für jeden Tag",19,"#d34a5a"]];
-car.innerHTML=B.map(b=>`<div class="card"><div class="art">${rs(b[3])}</div><h3>${b[0]}</h3><p>${b[1]}</p><div class="price">ab € ${b[2]}</div></div>`).join("");
-const D=[["Handgebunden","Jeder Strauß ein Unikat aus unserem Atelier."],["Same-Day","Lieferung am selben Tag bei Bestellung bis 13 Uhr."],["Kühlkette","Rosen lagern bei 4–6 °C bis zur Übergabe."],["Fair gehandelt","Rosen aus zertifizierten Farmen."],["Abo","Wöchentlich frische Blumen fürs Büro."],["Events","Hochzeiten, Gala, Trauerfloristik."],["Grußkarte","Handgeschrieben, kostenlos."],["Nachhaltig","Plastikfreie Verpackung."]];
-det.innerHTML=D.map(d=>`<div><svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#d8b46a"><circle cx="17" cy="17" r="15"/><path d="M17 6 C25 12 25 22 17 28 C9 22 9 12 17 6Z"/></svg><h3>${d[0]}</h3><p>${d[1]}</p></div>`).join("");
+credits.innerHTML="Bildnachweise (Wikimedia Commons; Bilder freigestellt/zugeschnitten): Hero-Rose & Bl\u00fctenbl\u00e4tter: <a href=\"https://commons.wikimedia.org/wiki/File:Rose_red_on_white_background.jpg\" target=\"_blank\" rel=\"noopener\">Paolo Neo</a> (Public domain) \u00b7 Bl\u00fctenbl\u00e4tter/Builder Rot: <a href=\"https://commons.wikimedia.org/wiki/File:Red_rose_in_white_background.jpg\" target=\"_blank\" rel=\"noopener\">George E. Koronaios</a> (CC BY-SA 4.0) \u00b7 Bl\u00fctenblatt: <a href=\"https://commons.wikimedia.org/wiki/File:Red_Roses_%286862116332%29.jpg\" target=\"_blank\" rel=\"noopener\">aussiegall from sydney, Australia</a> (CC BY 2.0) \u00b7 Teller: <a href=\"https://commons.wikimedia.org/wiki/File:2025.03.27_Vintage_English_Porcelain_QUEEN%27s_ROSINA_Bone_China_Saucer_Strawberry.jpg\" target=\"_blank\" rel=\"noopener\">Tess Mattew</a> (CC BY-SA 4.0) \u00b7 Builder Ros\u00e9/Wei\u00df/Gelb/Orange: <a href=\"https://commons.wikimedia.org/wiki/File:Pink-Rose-Sitia-Crete.jpg\" target=\"_blank\" rel=\"noopener\">Petro Stelte</a> (CC BY-SA 4.0) \u00b7 Strau\u00df: <a href=\"https://commons.wikimedia.org/wiki/File:Bouquet_of_Red_Roses.jpg\" target=\"_blank\" rel=\"noopener\">Ninix8</a> (CC BY 4.0) \u00b7 Strau\u00df: <a href=\"https://commons.wikimedia.org/wiki/File:Rose_bouquet%2C_D%C3%B6hren.jpg\" target=\"_blank\" rel=\"noopener\">Gerda Arendt</a> (CC0) \u00b7 Strau\u00df: <a href=\"https://commons.wikimedia.org/wiki/File:Bouquet_de_roses_%2839652784413%29.jpg\" target=\"_blank\" rel=\"noopener\">Angelo Brathot from Sologne-France</a> (Public domain) \u00b7 Strau\u00df: <a href=\"https://commons.wikimedia.org/wiki/File:Wedding_bouquet_white_roses.jpg\" target=\"_blank\" rel=\"noopener\">Rosendahl</a> (Public domain) \u00b7 Strau\u00df: <a href=\"https://commons.wikimedia.org/wiki/File:Bouquet_of_red_and_yellow_roses.jpg\" target=\"_blank\" rel=\"noopener\">Karthika Manikandan</a> (CC0) \u00b7 Pflege: <a href=\"https://commons.wikimedia.org/wiki/File:Close-up_of_a_red_rose_in_Pennsylvania.jpg\" target=\"_blank\" rel=\"noopener\">Donald Olszewski</a> (CC BY 4.0) \u00b7 Pflege: <a href=\"https://commons.wikimedia.org/wiki/File:Close-up_of_a_red_rose_in_Pennsylvania1.jpg\" target=\"_blank\" rel=\"noopener\">Donald Olszewski</a> (CC BY 4.0) \u00b7 Pflege: <a href=\"https://commons.wikimedia.org/wiki/File:A_heart_of_rose_petals.jpg\" target=\"_blank\" rel=\"noopener\">Sarah Afshar</a> (CC BY-SA 4.0) \u00b7 Details: <a href=\"https://commons.wikimedia.org/wiki/File:Red_rose_up_close.jpg\" target=\"_blank\" rel=\"noopener\">TMorata</a> (CC BY-SA 4.0) \u00b7 Details: <a href=\"https://commons.wikimedia.org/wiki/File:Red_rose_white_background.jpg\" target=\"_blank\" rel=\"noopener\">Mervat Salman</a> (CC BY-SA 4.0) \u00b7 Strau\u00df: Rosendahl (Public domain, Wikimedia Commons) \u00b7 Bearbeitungen von CC-BY-SA-Bildern stehen unter derselben Lizenz.";
+const B=[["Rouge Classique","Rote Rosen, üppig gebunden","b1",59],["Garten-Orange","Orange Rosen mit Grün","b2",49],["Blush Poème","Zweifarbige Rosé-Rosen","b3",54],["Blanc Mariage","Weiße Brautrosen","b4",89],["Cascade Rouge","Wasserfall-Brautstrauß","b5",119],["Duo Soleil","Rote & gelbe Rosen","b6",69]];
+car.innerHTML=B.map(b=>`<div class="card"><div class="art"><img loading="lazy" src="img/${b[2]}.jpg" alt="${b[0]}"></div><h3>${b[0]}</h3><p>${b[1]}</p><div class="price">ab € ${b[3]}</div></div>`).join("");
+const D=[["pic","d1"],["Handgebunden","Jeder Strauß ein Unikat aus unserem Atelier."],["Same-Day","Lieferung am selben Tag bei Bestellung bis 13 Uhr."],["Kühlkette","Rosen lagern bei 4–6 °C bis zur Übergabe."],["Fair gehandelt","Rosen aus zertifizierten Farmen."],["pic","d2"],["Events","Hochzeiten, Gala, Trauerfloristik."],["Nachhaltig","Plastikfreie Verpackung, handgeschriebene Karte."]];
+det.innerHTML=D.map(d=>d[0]=="pic"?`<div class="pic"><img loading="lazy" src="img/${d[1]}.jpg" alt="Rose"></div>`:`<div><svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#d8b46a"><circle cx="17" cy="17" r="15"/><path d="M17 6 C25 12 25 22 17 28 C9 22 9 12 17 6Z"/></svg><h3>${d[0]}</h3><p>${d[1]}</p></div>`).join("");
 for(let i=0;i<14;i++)meter.appendChild(document.createElement("span"));
 const t0=performance.now();setInterval(()=>{const s=(performance.now()-t0)/1000;tc.textContent=[0,Math.floor(s/60),Math.floor(s%60),Math.floor(s*24%24)].map(v=>String(v).padStart(2,"0")).join(":");meter.querySelectorAll("span").forEach(e=>e.style.height=(4+Math.random()*24)+"px")},120);
+
+/* ---- petal fall (2.5D, real photo cutouts) ---- */
+let rnd=11;const R=()=>{rnd=(rnd*16807)%2147483647;return rnd/2147483647};
+const N=32,pets=[];
+for(let i=0;i<N;i++){const im=new Image();im.src=`img/petal${i%6}.webp`;im.className="pet";world.appendChild(im);
+ pets.push({el:im,sx:R(),sy:R(),z:R(),ex:R(),ey:R(),rz0:R()*360,rz1:R()*720-360,rx:R()*540+180,ry:R()*360-180,dr:R()*2-1,sc:.75+R()*.5,t0:.08+i/N*.58})}
+let L={};
+function layout(){const vw=innerWidth,vh=innerHeight;const rh=vh*.64,rw=rh*1093/1416;
+ L={vw,vh,rh,rw,roseTop:vh*.2,plateW:Math.min(vw*.5,600)};L.plateTop=vh*1.62;L.plateCY=L.plateTop+L.plateW*.99/2;L.pan=L.plateCY-vh*.58;
+ rose.style.top=L.roseTop+"px";plate.style.top=L.plateTop+"px";plate.style.width=L.plateW+"px";
+ // bloom area of photo: x 25%-80%, y 5%-70%
+ L.bx=vw/2-rw/2+rw*.25;L.bw=rw*.55;L.by=L.roseTop+rh*.05;L.bh=rh*.6;L.pw=Math.max(40,rw*.16);render()}
+const cl=(v,a,b)=>Math.min(b,Math.max(a,v)),ss=t=>t*t*(3-2*t);
+function render(){const p=P;
+ const pan=ss(cl((p-.12)/.75,0,1))*L.pan;world.style.transform=`translate3d(0,${-pan}px,0)`;
+ const shed=cl((p-.08)/.6,0,1);rose.style.filter=`drop-shadow(0 30px 60px rgba(200,16,46,${.35-.2*shed})) saturate(${1-.35*shed}) brightness(${1-.35*shed})`;
+ rose.style.transform=`translateX(-50%) scale(${1-.12*shed}) rotate(${-4*shed}deg)`;rose.style.transformOrigin="50% 100%";
+ let landed=0;
+ pets.forEach((q,i)=>{const u=cl((p-q.t0)/.26,0,1),e=ss(u),g=u*u;const w=L.pw*q.sc*(0.8+q.z*.4);q.el.style.width=w+"px";
+  const x0=L.bx+q.sx*L.bw-w/2,y0=L.by+q.sy*L.bh*.7;
+  const a=q.ex*6.283,rr=Math.sqrt(q.ey)*.3;const x1=L.vw/2+Math.cos(a)*rr*L.plateW-w/2,y1=L.plateCY+Math.sin(a)*rr*L.plateW*.4-w*.55-i*.6;
+  const x=x0+(x1-x0)*e+Math.sin(u*Math.PI*2.2)*80*q.dr*(1-u),y=y0+(y1-y0)*g;
+  const rx=q.rx*u*(1-u)*2+62*e,rz=q.rz0+q.rz1*e,ry=q.ry*u*(1-u)*2;
+  const blur=u>0&&u<1?Math.abs(q.z-.5)*4*Math.sin(Math.PI*u):0;
+  q.el.style.opacity=u<=0?0:Math.min(1,u*12);if(u>=1)landed++;
+  q.el.style.zIndex=u>=1?10+i:50+Math.round(q.z*10);
+  q.el.style.filter=`blur(${blur.toFixed(1)}px) brightness(${u>=1?.85:1})`;
+  q.el.style.transform=`translate3d(${x}px,${y}px,0) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg)`});
+ window.LANDED=landed}
+addEventListener("resize",layout);
 const lenis=new Lenis();lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
 gsap.registerPlugin(ScrollTrigger);
 const caps=[["01 / BLÜTE","Eine Rose. Ganz.","Scrollen Sie – und erleben Sie, wie jedes Blütenblatt seinen Weg findet."],["02 / FALL","Blatt für Blatt.","Jedes Blütenblatt löst sich – sanft, schwerelos, echt."],["03 / ANKUNFT","Auf Porzellan gebettet.","Was bleibt, ist Schönheit – gesammelt auf feinem Porzellan."]];let ci=0;
-ScrollTrigger.create({trigger:"#story",start:"top top",end:"bottom bottom",scrub:true,onUpdate:s=>{P=s.progress;hum.textContent=(68-P*12).toFixed(0);tmp.textContent=(6+P*3).toFixed(1);gg.style.width=(40+P*55)+"%";
- const k=P<.25?0:P<.8?1:2;if(k!==ci){ci=k;kick=cap.querySelector(".kick");kick.textContent=caps[k][0];capH.textContent=caps[k][1];capP.textContent=caps[k][2];gsap.fromTo(cap,{opacity:0,y:20},{opacity:1,y:0,duration:.5})}
- gsap.set(".brand",{opacity:1-P*3,y:-P*200})}});
+ScrollTrigger.create({trigger:"#story",start:"top top",end:"bottom bottom",scrub:true,onUpdate:s=>{P=s.progress;render();hum.textContent=(68-P*12).toFixed(0);tmp.textContent=(6+P*3).toFixed(1);gg.style.width=(40+P*55)+"%";
+ const k=P<.2?0:P<.82?1:2;if(k!==ci){ci=k;cap.querySelector(".kick").textContent=caps[k][0];capH.textContent=caps[k][1];capP.textContent=caps[k][2];gsap.fromTo(cap,{opacity:0,y:20},{opacity:1,y:0,duration:.5})}
+ gsap.set(".brand",{opacity:1-P*4,y:-P*300})}});
+layout();
 document.querySelectorAll(".big").forEach(el=>{const n=+el.dataset.n,o={v:0};gsap.to(o,{v:n,duration:1.5,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 80%"},onUpdate:()=>el.textContent=String(Math.round(o.v)).padStart(2,"0")})});
 gsap.utils.toArray(".card,.det div").forEach((e,i)=>gsap.from(e,{opacity:0,y:40,duration:.7,delay:(i%4)*.08,scrollTrigger:{trigger:e,start:"top 92%"}}));
-</script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
-<script type="module">
-import * as THREE from "three";
-function fallback(){document.getElementById("gl").style.display="none";document.getElementById("fb").style.display="block";window.GL_OK=false}
-let r;try{r=new THREE.WebGLRenderer({canvas:document.getElementById("gl"),antialias:true,alpha:true});}catch(e){fallback()}
-if(r){
-r.setPixelRatio(Math.min(devicePixelRatio,2));r.toneMapping=THREE.ACESFilmicToneMapping;r.outputColorSpace=THREE.SRGBColorSpace;
-const sc=new THREE.Scene();const cam=new THREE.PerspectiveCamera(35,1,.1,100);
-function lights(s){s.add(new THREE.HemisphereLight(0xffe8e0,0x200008,.9));const k=new THREE.DirectionalLight(0xffffff,2.4);k.position.set(3,5,4);s.add(k);const rim=new THREE.DirectionalLight(0xd8b46a,2);rim.position.set(-4,2,-3);s.add(rim);const f=new THREE.PointLight(0xff3050,8,10);f.position.set(0,-1,2);s.add(f)}
-lights(sc);
-// petal geometry: curved cupped plane
-function petalGeo(w,h,cup,curl){const g=new THREE.PlaneGeometry(w,h,10,12);const p=g.attributes.position;
- for(let i=0;i<p.count;i++){let x=p.getX(i),y=p.getY(i)+h/2;const t=y/h;const width=Math.sin(Math.PI*Math.min(1,t*.95+.08))*(1-0.25*t);x*=width;
-  let z=-cup*(x*x)/(w*w)*4 - curl*t*t*h*.5 + 0.15*h*Math.sin(t*Math.PI);p.setXYZ(i,x,y,z)}g.computeVertexNormals();return g}
-const petalMat=c=>new THREE.MeshPhysicalMaterial({color:c,roughness:.45,sheen:1,sheenColor:new THREE.Color(0xff6680),side:THREE.DoubleSide,clearcoat:.1});
-function makeRose(color,withStem=true){const g=new THREE.Group();const head=new THREE.Group();head.position.y=1.2;g.add(head);const petals=[];
- const layers=[[3,.32,.42,.2,1.5,0],[5,.5,.58,.6,1.05,.4],[6,.66,.68,.8,.6,.8],[7,.8,.72,.9,.2,1.2]];let li=0;
- for(const [n,w,h,cup,tilt,off] of layers){for(let i=0;i<n;i++){const a=i/n*Math.PI*2+off+li;const geo=petalGeo(w,h,cup,-.3+li*.25);const col=new THREE.Color(color).offsetHSL(0,0,-0.08+li*0.04);
-  const m=new THREE.Mesh(geo,petalMat(col));const piv=new THREE.Group();piv.rotation.y=a;const inner=new THREE.Group();inner.position.z=.04+li*.05;inner.rotation.x=-(Math.PI/2-tilt)*0.9;inner.add(m);piv.add(inner);head.add(piv);petals.push(m)}li++}
- const core=new THREE.Mesh(new THREE.SphereGeometry(.13,16,12),petalMat(new THREE.Color(color).offsetHSL(0,0,-.15)));core.scale.y=1.6;core.position.y=.12;head.add(core);
- const sep=new THREE.MeshStandardMaterial({color:0x2f6b2a,roughness:.6});
- for(let i=0;i<5;i++){const s=new THREE.Mesh(new THREE.ConeGeometry(.06,.45,4),sep);s.position.set(Math.cos(i*1.26)*.18,-.05,Math.sin(i*1.26)*.18);s.rotation.set(Math.sin(i*1.26)*1.9,0,-Math.cos(i*1.26)*1.9);head.add(s)}
- if(withStem){const curve=new THREE.CatmullRomCurve3([new THREE.Vector3(0,1.15,0),new THREE.Vector3(.05,.3,0),new THREE.Vector3(-.05,-.8,.05),new THREE.Vector3(0,-1.9,0)]);
-  g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,40,.035,8),sep));
-  const lg=new THREE.PlaneGeometry(.35,.6,6,8);const lp=lg.attributes.position;for(let i=0;i<lp.count;i++){const x=lp.getX(i),y=lp.getY(i)+.3;lp.setX(i,x*Math.sin(Math.PI*y/.6));lp.setZ(i,-x*x*1.5+y*y*.3)}lg.translate(0,.3,0);lg.computeVertexNormals();
-  [[-.2,1],[.6,-1],[-1.1,1]].forEach(([y,s])=>{const l=new THREE.Mesh(lg,new THREE.MeshStandardMaterial({color:0x3a7d32,roughness:.5,side:THREE.DoubleSide}));l.position.set(0,y,0);l.rotation.set(0,s>0?0:Math.PI,s*-1.0);g.add(l)})}
- return {g,head,petals}}
-const rose=makeRose(0xb0102a);sc.add(rose.g);
-// plate
-const PY=-3.3;const plate=new THREE.Mesh(new THREE.LatheGeometry([[0,0],[.6,0],[.62,.02],[.75,.05],[1.15,.12],[1.25,.18],[1.27,.2],[1.2,.19],[.7,.09],[0,.07]].map(p=>new THREE.Vector2(p[0],p[1])),64),new THREE.MeshPhysicalMaterial({color:0xf6f1ea,roughness:.15,clearcoat:1,side:THREE.DoubleSide}));
-plate.position.y=PY;sc.add(plate);const rimg=new THREE.Mesh(new THREE.TorusGeometry(1.24,.008,8,80),new THREE.MeshStandardMaterial({color:0xd8b46a,metalness:1,roughness:.2}));rimg.rotation.x=Math.PI/2;rimg.position.y=PY+.2;sc.add(rimg);
-// precompute fall params (world space)
-rose.g.updateMatrixWorld(true);let rnd=7;const R=()=>{rnd=(rnd*16807)%2147483647;return rnd/2147483647};
-const order=rose.petals.map((m,i)=>i).reverse();// outer petals fall first
-const F=rose.petals.map(m=>{const p=new THREE.Vector3(),q=new THREE.Quaternion(),s=new THREE.Vector3();m.matrixWorld.decompose(p,q,s);return{m,par:m.parent,p0:p,q0:q}});
-order.forEach((idx,k)=>{const f=F[idx];const a=R()*6.28,rr=Math.sqrt(R())*.85;f.end=new THREE.Vector3(Math.cos(a)*rr,PY+.1+k*.012+(1-rr)*.05,Math.sin(a)*rr*.9);
- f.qe=new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI/2+(R()-.5)*.25,R()*6.28,(R()-.5)*.25));f.spin=new THREE.Vector3(R()*6-3,R()*8-4,R()*6-3);f.drift=new THREE.Vector3((R()-.5)*1.4,0,(R()-.5)*1.2);
- f.t0=.12+k/order.length*.55;f.t1=f.t0+.22});
-const wrap=new THREE.Group();sc.add(wrap);
-F.forEach(f=>{f.holder=new THREE.Group();wrap.add(f.holder)});
-const tmpE=new THREE.Euler(),tq=new THREE.Quaternion();
-function resize(){const w=innerWidth,h=innerHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}addEventListener("resize",resize);resize();
-const clk=new THREE.Clock();
-function frame(){const t=clk.getElapsedTime(),P=window.P;
- // rose idle motion fades as fall starts
- const idle=Math.max(0,1-P*4);rose.g.rotation.y=t*.25*idle+P*1.5;rose.g.rotation.z=Math.sin(t*.7)*.04*idle;rose.g.position.y=Math.sin(t*.9)*.05*idle;
- rose.g.updateMatrixWorld(true);
- F.forEach(f=>{const u=THREE.MathUtils.clamp((P-f.t0)/(f.t1-f.t0),0,1);
-  if(u<=0){if(f.m.parent!==f.par){f.par.add(f.m);f.m.position.set(0,0,0);f.m.quaternion.identity()}return}
-  if(f.m.parent!==f.holder){f.holder.add(f.m);f.m.position.set(0,0,0);f.m.quaternion.identity()}
-  // start pose = current attached world pose
-  const s=new THREE.Vector3(),sq=new THREE.Quaternion(),ss=new THREE.Vector3();f.par.matrixWorld.decompose(s,sq,ss);
-  const e=u*u*(3-2*u),fall=u*u;// gravity-ish
-  const pos=new THREE.Vector3().lerpVectors(s,f.end,0);pos.x=s.x+(f.end.x-s.x)*e+f.drift.x*Math.sin(Math.PI*u);pos.z=s.z+(f.end.z-s.z)*e+f.drift.z*Math.sin(Math.PI*u);pos.y=s.y+(f.end.y-s.y)*fall;
-  f.holder.position.copy(pos);
-  tmpE.set(f.spin.x*u*(1-u)*2,f.spin.y*u*(1-u)*2,f.spin.z*u*(1-u)*2);tq.setFromEuler(tmpE);
-  f.holder.quaternion.slerpQuaternions(sq,f.qe,e).multiply(tq);f.holder.scale.copy(ss);f.holder.scale.z*=1-.6*e});
- // camera: framing rose, then follow down to plate
- const c=THREE.MathUtils.smoothstep(P,.1,.85);cam.position.set(Math.sin(c*.6)*1.5,1.0-c*3.2+c*1.2,7.5-c*2.2);cam.lookAt(0,1.0-c*4.1,0);
- r.render(sc,cam);requestAnimationFrame(frame)}
-frame();window.GL_OK=true;window.dbgPlate=()=>F.filter(f=>f.m.parent===f.holder).map(f=>f.holder.position.y.toFixed(2));
-// pod customizer
-const c2=document.getElementById("gl2");const r2=new THREE.WebGLRenderer({canvas:c2,antialias:true,alpha:true});r2.toneMapping=THREE.ACESFilmicToneMapping;r2.outputColorSpace=THREE.SRGBColorSpace;
-const s2=new THREE.Scene();lights(s2);const cam2=new THREE.PerspectiveCamera(35,1,.1,50);cam2.position.set(0,.6,7);cam2.lookAt(0,0,0);
-let bq=new THREE.Group();s2.add(bq);let col=0xb0102a,cnt=1;
-function build(){s2.remove(bq);bq=new THREE.Group();const n=cnt;for(let i=0;i<n;i++){const ro=makeRose(col).g;const a=i/n*6.28,rr=n>1?.25+.2*Math.sqrt(i/n)*2:0;ro.position.set(Math.cos(a*2.4)*rr,(n>1?-.2:0)-(rr*.3),Math.sin(a*2.4)*rr);ro.rotation.set(Math.sin(a)*rr*.5,a,Math.cos(a)*rr*.5);ro.scale.setScalar(n>1?.75:1);bq.add(ro)}s2.add(bq);
- total.textContent="€ "+({1:9,3:24,7:49,12:79}[cnt])}
-const cols=[["Rot",0xb0102a],["Rosé",0xe8a0a8],["Weiß",0xf3ece0],["Pfirsich",0xf2a07a],["Noir",0x4a0410]];
-sw.innerHTML=cols.map((c,i)=>`<button title="${c[0]}" data-c="${c[1]}" class="${i?"":"on"}" style="background:#${c[1].toString(16).padStart(6,"0")}"></button>`).join("");
-cnt.innerHTML!==undefined;document.getElementById("cnt").innerHTML=[1,3,7,12].map((n,i)=>`<button data-n="${n}" class="${i?"":"on"}">${n}</button>`).join("");
-sw.onclick=e=>{const b=e.target.closest("button");if(!b)return;sw.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");col=+b.dataset.c;build()};
+
+/* ---- builder with real photos ---- */
+const C=[["ROT","c-rot"],["ROSÉ","c-rose"],["WEISS","c-weiss"],["GELB","c-gelb"],["ORANGE","c-orange"]];let col=C[0],cnt=1;
+sw.innerHTML=C.map((c,i)=>`<button title="${c[0]}" class="${i?"":"on"}" style="background:url(img/${c[1]}.webp)"></button>`).join("");
+document.getElementById("cnt").innerHTML=[1,3,7,12].map((n,i)=>`<button data-n="${n}" class="${i?"":"on"}">${n}</button>`).join("");
+const slots=[[0,0,1]];for(let i=1;i<12;i++){const a=i*2.4,r=.07+.055*Math.sqrt(i);slots.push([Math.cos(a)*r,Math.sin(a)*r*.8,.85-.02*i])}
+for(let i=0;i<12;i++){const im=new Image();im.alt="Rose";pod.appendChild(im)}
+function build(){const ims=[...pod.querySelectorAll("img")];const n=cnt,base=n==1?44:n==3?36:n==7?32:28;
+ ims.forEach((im,i)=>{if(i<n){const s=slots[i];im.src=`img/${col[1]}.webp`;im.style.opacity=1;im.style.width=base*s[2]+"%";im.style.left=(50+s[0]*100-base*s[2]/2)+"%";im.style.top=(50+s[1]*100-base*s[2]/2)+"%";im.style.zIndex=20-i;im.style.transform=`rotate(${(i*37)%30-15}deg)`}else{im.style.opacity=0;im.style.width="0%"}});
+ cname.textContent=col[0];total.textContent="€ "+({1:9,3:24,7:49,12:79}[cnt])}
+sw.onclick=e=>{const b=e.target.closest("button");if(!b)return;const i=[...sw.children].indexOf(b);sw.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");col=C[i];build()};
 document.getElementById("cnt").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.getElementById("cnt").querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");cnt=+b.dataset.n;build()};
 build();
-function f2(){const w=c2.clientWidth;if(w&&c2.width!==w){r2.setSize(w,w,false)}bq.rotation.y+=.006;r2.render(s2,cam2);requestAnimationFrame(f2)}f2();
-}
 </script></body></html>
