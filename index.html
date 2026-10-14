@@ -1,0 +1,175 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROSÉ ATELIER – Floristik (Konzept-Entwurf)</title>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0607;--bg2:#120a0c;--fg:#f4ece6;--mut:#9a8a85;--red:#c8102e;--gold:#d8b46a;--line:rgba(216,180,106,.2)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--fg);font-family:Inter,sans-serif;overflow-x:hidden}
+.mono{font-family:"JetBrains Mono",monospace}h1,h2,h3{font-family:"Chakra Petch";text-transform:uppercase}
+nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:14px 3vw;background:linear-gradient(#0a0607ee,#0a060700)}
+.logo{font:700 18px "Chakra Petch";letter-spacing:.08em}.logo small{display:block;font:500 8px "JetBrains Mono";letter-spacing:.3em;color:var(--gold)}
+nav ul{display:flex;gap:22px;list-style:none;font:500 11px "JetBrains Mono"}nav a{color:#ddd;text-decoration:none}nav a:hover{color:var(--gold)}
+.hud{position:fixed;inset:62px 1.6vw 1.6vw;pointer-events:none;z-index:55;font:500 10px "JetBrains Mono";color:#ddd;letter-spacing:.1em}
+.hud i{position:absolute;width:22px;height:22px;border:1.5px solid rgba(255,255,255,.7)}
+.hud i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}.hud i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}.hud i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}.hud i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+.grid{position:absolute;inset:0;background:linear-gradient(90deg,transparent 33.2%,rgba(255,255,255,.05) 33.3%,transparent 33.4%,transparent 66.6%,rgba(255,255,255,.05) 66.7%,transparent 66.8%),linear-gradient(transparent 33.2%,rgba(255,255,255,.05) 33.3%,transparent 33.4%,transparent 66.6%,rgba(255,255,255,.05) 66.7%,transparent 66.8%)}
+.cross{position:absolute;left:50%;top:50%;width:30px;height:30px;transform:translate(-50%,-50%)}.cross:before,.cross:after{content:"";position:absolute;background:rgba(255,255,255,.5)}.cross:before{left:14px;width:1px;height:30px}.cross:after{top:14px;height:1px;width:30px}
+.rec{position:absolute;left:30px;top:-2px}.rec b{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-right:6px;animation:bl 1s steps(2) infinite}@keyframes bl{50%{opacity:.1}}
+.tr{position:absolute;right:30px;top:-2px;color:#aaa}.bl{position:absolute;left:30px;bottom:0}.br{position:absolute;right:30px;bottom:0;text-align:right}
+.meter{display:flex;gap:3px;align-items:flex-end;height:28px;margin-top:6px}.meter span{width:4px;background:var(--gold);transition:height .15s}
+.gauge{width:120px;height:4px;background:#333;margin-top:6px}.gauge div{height:100%;background:linear-gradient(90deg,var(--gold),var(--red))}
+#story{height:500vh;position:relative}#stage{position:sticky;top:0;height:100vh;overflow:hidden}
+#gl{position:absolute;inset:0;width:100%;height:100%}
+#fb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(60vw,420px);display:none}
+.brand{position:absolute;left:0;right:0;top:16vh;text-align:center;pointer-events:none;z-index:2}
+.chrome{font:700 clamp(54px,13vw,210px)/.85 "Chakra Petch";letter-spacing:-.02em;background:linear-gradient(180deg,#fff 0%,#e9d7b0 30%,#7a5a2a 50%,#f7e6c0 62%,#a0782f 80%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(200,16,46,.35));opacity:.92}
+.sub{font:500 12px "JetBrains Mono";letter-spacing:.4em;color:var(--gold);margin-top:14px}
+.cap{position:absolute;left:6vw;bottom:12vh;max-width:340px;z-index:2}.cap h3{font-size:26px;margin-bottom:8px}.cap p{color:var(--mut);font-size:14px;line-height:1.6}
+section.blk{padding:16vh 6vw;position:relative}.kick{font:500 11px "JetBrains Mono";letter-spacing:.3em;color:var(--gold);margin-bottom:14px}
+h2{font-size:clamp(36px,6vw,84px);line-height:.95;margin-bottom:40px}h2 em{font-style:normal;color:var(--red)}
+.car{display:flex;gap:22px;overflow-x:auto;padding-bottom:20px;scroll-snap-type:x mandatory}.car::-webkit-scrollbar{height:4px}.car::-webkit-scrollbar-thumb{background:var(--gold)}
+.card{flex:0 0 300px;scroll-snap-align:start;background:linear-gradient(160deg,#1b0e11,#0e0809);border:1px solid var(--line);padding:24px;border-radius:4px;transition:transform .4s,border-color .4s}
+.card:hover{transform:translateY(-8px);border-color:var(--gold)}.card .art{height:200px;display:grid;place-items:center;margin-bottom:18px;background:radial-gradient(circle,rgba(200,16,46,.25),transparent 70%)}
+.card h3{font-size:22px}.card p{color:var(--mut);font-size:13px;margin:8px 0 16px;line-height:1.5}.price{font:600 20px "JetBrains Mono";color:var(--gold)}
+.cust{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+.pod{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 60%,rgba(200,16,46,.35),rgba(216,180,106,.08) 55%,transparent 70%);box-shadow:0 0 120px rgba(200,16,46,.25) inset;border:1px solid var(--line)}
+#gl2{width:100%;height:100%;display:block}
+.opt{margin-bottom:28px}.opt label{display:block;font:500 11px "JetBrains Mono";letter-spacing:.2em;color:var(--mut);margin-bottom:10px}
+.sw{display:flex;gap:10px;flex-wrap:wrap}.sw button{width:42px;height:42px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform .3s}.sw button.on,.sw button:hover{border-color:var(--gold);transform:scale(1.1)}
+.cnt button{background:none;border:1px solid var(--line);color:var(--fg);padding:10px 18px;font:500 13px "JetBrains Mono";cursor:pointer}.cnt button.on{background:var(--gold);color:#000}
+.total{font:700 48px "Chakra Petch";color:var(--gold)}
+.proc{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;border-top:1px solid var(--line)}
+.big{font:700 clamp(120px,22vw,320px)/1 "Chakra Petch";color:transparent;-webkit-text-stroke:1px var(--gold)}
+.proc p{color:var(--mut);line-height:1.7;max-width:440px}
+.det{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.det div{background:var(--bg);padding:34px 24px;transition:background .4s}.det div:hover{background:#1a0d10}.det div:hover svg{transform:rotate(20deg) scale(1.1)}
+.det svg{transition:transform .5s;margin-bottom:16px}.det h3{font-size:16px;margin-bottom:8px}.det p{color:var(--mut);font-size:13px;line-height:1.5}
+footer{padding:10vh 6vw 6vh;border-top:1px solid var(--line);color:var(--mut);font-size:13px;line-height:1.7}footer .chrome{font-size:clamp(40px,10vw,140px)}
+.note{margin-top:30px;padding:14px 18px;border:1px dashed var(--gold);color:var(--gold);font:500 12px "JetBrains Mono"}
+@media(max-width:800px){nav ul{display:none}.cust,.proc{grid-template-columns:1fr}.det{grid-template-columns:1fr 1fr}.br{display:none}}
+</style></head><body>
+<nav><div class="logo">ROSÉ ATELIER<small>FLORISTIK · SEIT 2026</small></div><ul><li><a href="#sortiment">Sortiment</a></li><li><a href="#builder">Strauß-Builder</a></li><li><a href="#pflege">Pflege</a></li><li><a href="#kontakt">Kontakt</a></li></ul><div class="mono" style="font-size:11px;letter-spacing:.2em">MENÜ ☰</div></nav>
+<div class="hud"><div class="grid"></div><i></i><i></i><i></i><i></i><div class="cross"></div>
+<div class="rec"><b></b>BLOOM <span id="tc">00:00:00:00</span></div><div class="tr">ISO 400 · 4K · 24FPS</div>
+<div class="bl">LEVEL<div class="meter" id="meter"></div></div>
+<div class="br">LUFTFEUCHTE <span id="hum">68</span>%<br>TEMP <span id="tmp">6.0</span>°C<div class="gauge"><div id="gg" style="width:40%"></div></div></div></div>
+
+<section id="story"><div id="stage"><canvas id="gl"></canvas>
+<svg id="fb" viewBox="0 0 200 260"><path d="M100 120 C98 170 102 210 100 255" stroke="#2f6b2a" stroke-width="5" fill="none"/><path d="M100 190 q-40 -10 -50 -35 q35 0 50 30z" fill="#3a7d32"/><g fill="#b0102a"><ellipse cx="100" cy="90" rx="55" ry="45"/><ellipse cx="78" cy="80" rx="30" ry="38" fill="#d01836"/><ellipse cx="122" cy="80" rx="30" ry="38" fill="#c3122f"/><ellipse cx="100" cy="72" rx="22" ry="30" fill="#8e0a20"/></g><ellipse cx="100" cy="250" rx="70" ry="10" fill="#eee"/></svg>
+<div class="brand"><div class="chrome">ROSÉ</div><div class="sub">ATELIER · HANDGEBUNDEN IN DEUTSCHLAND</div></div>
+<div class="cap" id="cap"><div class="kick">01 / BLÜTE</div><h3 id="capH">Eine Rose. Ganz.</h3><p id="capP">Scrollen Sie – und erleben Sie, wie jedes Blütenblatt seinen Weg findet.</p></div>
+</div></section>
+
+<section class="blk" id="sortiment"><div class="kick">02 / SORTIMENT</div><h2>Sträuße mit <em>Haltung</em></h2><div class="car" id="car"></div></section>
+
+<section class="blk" id="builder"><div class="kick">03 / STRAUSS-BUILDER</div><h2>Ihr Strauß. <em>Live.</em></h2>
+<div class="cust"><div class="pod"><canvas id="gl2"></canvas></div><div>
+<div class="opt"><label>FARBE</label><div class="sw" id="sw"></div></div>
+<div class="opt"><label>ANZAHL ROSEN</label><div class="cnt" id="cnt"></div></div>
+<div class="opt"><label>PREIS (KONZEPT)</label><div class="total" id="total">€ 49</div></div></div></div></section>
+
+<section id="pflege"><div class="blk proc"><div class="big" data-n="1">0</div><div><div class="kick">PFLEGE · SCHRITT 1</div><h2>Schräg <em>anschneiden</em></h2><p>Stiele 2 cm schräg mit scharfem Messer kürzen – so trinkt die Rose optimal.</p></div></div>
+<div class="blk proc"><div class="big" data-n="2">0</div><div><div class="kick">PFLEGE · SCHRITT 2</div><h2>Frisches <em>Wasser</em></h2><p>Lauwarmes Wasser, alle zwei Tage wechseln. Blätter unter der Wasserlinie entfernen.</p></div></div>
+<div class="blk proc"><div class="big" data-n="7">0</div><div><div class="kick">PFLEGE · ERGEBNIS</div><h2>Tage <em>Frische</em></h2><p>Mindestens sieben Tage Haltbarkeit – bei kühlem Standort ohne direkte Sonne.</p></div></div></section>
+
+<section class="blk"><div class="kick">04 / DETAILS</div><h2>Das <em>Atelier</em></h2><div class="det" id="det"></div></section>
+
+<footer id="kontakt"><div class="chrome">ATELIER</div><p style="margin-top:24px">Muster-Floristik · Musterstraße 1 · 12345 Musterstadt · Mo–Sa 9–19 Uhr</p>
+<div class="note">Hinweis: Unverbindlicher Konzept-Entwurf (kein Kundenprojekt). Name, Texte, Preise und Adressen sind fiktive Platzhalter. Entwurf: Mohammad, 015738338427</div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+window.P=0;
+const rs=(c)=>`<svg width="120" height="150" viewBox="0 0 200 260"><path d="M100 120 C98 170 102 210 100 255" stroke="#2f6b2a" stroke-width="5" fill="none"/><ellipse cx="100" cy="90" rx="55" ry="45" fill="${c}"/><ellipse cx="80" cy="80" rx="30" ry="38" fill="${c}" opacity=".8"/><ellipse cx="120" cy="80" rx="30" ry="38" fill="${c}" opacity=".9"/><ellipse cx="100" cy="72" rx="22" ry="30" fill="#000" opacity=".25"/></svg>`;
+const B=[["Rouge Classique","12 rote Rosen, Eukalyptus",59,"#b0102a"],["Blush Poème","Rosé-Rosen & Schleierkraut",49,"#e8a0a8"],["Velvet Noir","Dunkle Baccara-Rosen",79,"#5a0612"],["Champagne","Cremerosen & Gold-Seide",69,"#ead7b0"],["Amour Box","Rosen in schwarzer Hutschachtel",99,"#c8102e"],["Mini Bouquet","3 Rosen für jeden Tag",19,"#d34a5a"]];
+car.innerHTML=B.map(b=>`<div class="card"><div class="art">${rs(b[3])}</div><h3>${b[0]}</h3><p>${b[1]}</p><div class="price">ab € ${b[2]}</div></div>`).join("");
+const D=[["Handgebunden","Jeder Strauß ein Unikat aus unserem Atelier."],["Same-Day","Lieferung am selben Tag bei Bestellung bis 13 Uhr."],["Kühlkette","Rosen lagern bei 4–6 °C bis zur Übergabe."],["Fair gehandelt","Rosen aus zertifizierten Farmen."],["Abo","Wöchentlich frische Blumen fürs Büro."],["Events","Hochzeiten, Gala, Trauerfloristik."],["Grußkarte","Handgeschrieben, kostenlos."],["Nachhaltig","Plastikfreie Verpackung."]];
+det.innerHTML=D.map(d=>`<div><svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="#d8b46a"><circle cx="17" cy="17" r="15"/><path d="M17 6 C25 12 25 22 17 28 C9 22 9 12 17 6Z"/></svg><h3>${d[0]}</h3><p>${d[1]}</p></div>`).join("");
+for(let i=0;i<14;i++)meter.appendChild(document.createElement("span"));
+const t0=performance.now();setInterval(()=>{const s=(performance.now()-t0)/1000;tc.textContent=[0,Math.floor(s/60),Math.floor(s%60),Math.floor(s*24%24)].map(v=>String(v).padStart(2,"0")).join(":");meter.querySelectorAll("span").forEach(e=>e.style.height=(4+Math.random()*24)+"px")},120);
+const lenis=new Lenis();lenis.on("scroll",ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+gsap.registerPlugin(ScrollTrigger);
+const caps=[["01 / BLÜTE","Eine Rose. Ganz.","Scrollen Sie – und erleben Sie, wie jedes Blütenblatt seinen Weg findet."],["02 / FALL","Blatt für Blatt.","Jedes Blütenblatt löst sich – sanft, schwerelos, echt."],["03 / ANKUNFT","Auf Porzellan gebettet.","Was bleibt, ist Schönheit – gesammelt auf feinem Porzellan."]];let ci=0;
+ScrollTrigger.create({trigger:"#story",start:"top top",end:"bottom bottom",scrub:true,onUpdate:s=>{P=s.progress;hum.textContent=(68-P*12).toFixed(0);tmp.textContent=(6+P*3).toFixed(1);gg.style.width=(40+P*55)+"%";
+ const k=P<.25?0:P<.8?1:2;if(k!==ci){ci=k;kick=cap.querySelector(".kick");kick.textContent=caps[k][0];capH.textContent=caps[k][1];capP.textContent=caps[k][2];gsap.fromTo(cap,{opacity:0,y:20},{opacity:1,y:0,duration:.5})}
+ gsap.set(".brand",{opacity:1-P*3,y:-P*200})}});
+document.querySelectorAll(".big").forEach(el=>{const n=+el.dataset.n,o={v:0};gsap.to(o,{v:n,duration:1.5,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 80%"},onUpdate:()=>el.textContent=String(Math.round(o.v)).padStart(2,"0")})});
+gsap.utils.toArray(".card,.det div").forEach((e,i)=>gsap.from(e,{opacity:0,y:40,duration:.7,delay:(i%4)*.08,scrollTrigger:{trigger:e,start:"top 92%"}}));
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script type="module">
+import * as THREE from "three";
+function fallback(){document.getElementById("gl").style.display="none";document.getElementById("fb").style.display="block";window.GL_OK=false}
+let r;try{r=new THREE.WebGLRenderer({canvas:document.getElementById("gl"),antialias:true,alpha:true});}catch(e){fallback()}
+if(r){
+r.setPixelRatio(Math.min(devicePixelRatio,2));r.toneMapping=THREE.ACESFilmicToneMapping;r.outputColorSpace=THREE.SRGBColorSpace;
+const sc=new THREE.Scene();const cam=new THREE.PerspectiveCamera(35,1,.1,100);
+function lights(s){s.add(new THREE.HemisphereLight(0xffe8e0,0x200008,.9));const k=new THREE.DirectionalLight(0xffffff,2.4);k.position.set(3,5,4);s.add(k);const rim=new THREE.DirectionalLight(0xd8b46a,2);rim.position.set(-4,2,-3);s.add(rim);const f=new THREE.PointLight(0xff3050,8,10);f.position.set(0,-1,2);s.add(f)}
+lights(sc);
+// petal geometry: curved cupped plane
+function petalGeo(w,h,cup,curl){const g=new THREE.PlaneGeometry(w,h,10,12);const p=g.attributes.position;
+ for(let i=0;i<p.count;i++){let x=p.getX(i),y=p.getY(i)+h/2;const t=y/h;const width=Math.sin(Math.PI*Math.min(1,t*.95+.08))*(1-0.25*t);x*=width;
+  let z=-cup*(x*x)/(w*w)*4 - curl*t*t*h*.5 + 0.15*h*Math.sin(t*Math.PI);p.setXYZ(i,x,y,z)}g.computeVertexNormals();return g}
+const petalMat=c=>new THREE.MeshPhysicalMaterial({color:c,roughness:.45,sheen:1,sheenColor:new THREE.Color(0xff6680),side:THREE.DoubleSide,clearcoat:.1});
+function makeRose(color,withStem=true){const g=new THREE.Group();const head=new THREE.Group();head.position.y=1.2;g.add(head);const petals=[];
+ const layers=[[3,.32,.42,.2,1.5,0],[5,.5,.58,.6,1.05,.4],[6,.66,.68,.8,.6,.8],[7,.8,.72,.9,.2,1.2]];let li=0;
+ for(const [n,w,h,cup,tilt,off] of layers){for(let i=0;i<n;i++){const a=i/n*Math.PI*2+off+li;const geo=petalGeo(w,h,cup,-.3+li*.25);const col=new THREE.Color(color).offsetHSL(0,0,-0.08+li*0.04);
+  const m=new THREE.Mesh(geo,petalMat(col));const piv=new THREE.Group();piv.rotation.y=a;const inner=new THREE.Group();inner.position.z=.04+li*.05;inner.rotation.x=-(Math.PI/2-tilt)*0.9;inner.add(m);piv.add(inner);head.add(piv);petals.push(m)}li++}
+ const core=new THREE.Mesh(new THREE.SphereGeometry(.13,16,12),petalMat(new THREE.Color(color).offsetHSL(0,0,-.15)));core.scale.y=1.6;core.position.y=.12;head.add(core);
+ const sep=new THREE.MeshStandardMaterial({color:0x2f6b2a,roughness:.6});
+ for(let i=0;i<5;i++){const s=new THREE.Mesh(new THREE.ConeGeometry(.06,.45,4),sep);s.position.set(Math.cos(i*1.26)*.18,-.05,Math.sin(i*1.26)*.18);s.rotation.set(Math.sin(i*1.26)*1.9,0,-Math.cos(i*1.26)*1.9);head.add(s)}
+ if(withStem){const curve=new THREE.CatmullRomCurve3([new THREE.Vector3(0,1.15,0),new THREE.Vector3(.05,.3,0),new THREE.Vector3(-.05,-.8,.05),new THREE.Vector3(0,-1.9,0)]);
+  g.add(new THREE.Mesh(new THREE.TubeGeometry(curve,40,.035,8),sep));
+  const lg=new THREE.PlaneGeometry(.35,.6,6,8);const lp=lg.attributes.position;for(let i=0;i<lp.count;i++){const x=lp.getX(i),y=lp.getY(i)+.3;lp.setX(i,x*Math.sin(Math.PI*y/.6));lp.setZ(i,-x*x*1.5+y*y*.3)}lg.translate(0,.3,0);lg.computeVertexNormals();
+  [[-.2,1],[.6,-1],[-1.1,1]].forEach(([y,s])=>{const l=new THREE.Mesh(lg,new THREE.MeshStandardMaterial({color:0x3a7d32,roughness:.5,side:THREE.DoubleSide}));l.position.set(0,y,0);l.rotation.set(0,s>0?0:Math.PI,s*-1.0);g.add(l)})}
+ return {g,head,petals}}
+const rose=makeRose(0xb0102a);sc.add(rose.g);
+// plate
+const PY=-3.3;const plate=new THREE.Mesh(new THREE.LatheGeometry([[0,0],[.6,0],[.62,.02],[.75,.05],[1.15,.12],[1.25,.18],[1.27,.2],[1.2,.19],[.7,.09],[0,.07]].map(p=>new THREE.Vector2(p[0],p[1])),64),new THREE.MeshPhysicalMaterial({color:0xf6f1ea,roughness:.15,clearcoat:1,side:THREE.DoubleSide}));
+plate.position.y=PY;sc.add(plate);const rimg=new THREE.Mesh(new THREE.TorusGeometry(1.24,.008,8,80),new THREE.MeshStandardMaterial({color:0xd8b46a,metalness:1,roughness:.2}));rimg.rotation.x=Math.PI/2;rimg.position.y=PY+.2;sc.add(rimg);
+// precompute fall params (world space)
+rose.g.updateMatrixWorld(true);let rnd=7;const R=()=>{rnd=(rnd*16807)%2147483647;return rnd/2147483647};
+const order=rose.petals.map((m,i)=>i).reverse();// outer petals fall first
+const F=rose.petals.map(m=>{const p=new THREE.Vector3(),q=new THREE.Quaternion(),s=new THREE.Vector3();m.matrixWorld.decompose(p,q,s);return{m,par:m.parent,p0:p,q0:q}});
+order.forEach((idx,k)=>{const f=F[idx];const a=R()*6.28,rr=Math.sqrt(R())*.85;f.end=new THREE.Vector3(Math.cos(a)*rr,PY+.1+k*.012+(1-rr)*.05,Math.sin(a)*rr*.9);
+ f.qe=new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI/2+(R()-.5)*.25,R()*6.28,(R()-.5)*.25));f.spin=new THREE.Vector3(R()*6-3,R()*8-4,R()*6-3);f.drift=new THREE.Vector3((R()-.5)*1.4,0,(R()-.5)*1.2);
+ f.t0=.12+k/order.length*.55;f.t1=f.t0+.22});
+const wrap=new THREE.Group();sc.add(wrap);
+F.forEach(f=>{f.holder=new THREE.Group();wrap.add(f.holder)});
+const tmpE=new THREE.Euler(),tq=new THREE.Quaternion();
+function resize(){const w=innerWidth,h=innerHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}addEventListener("resize",resize);resize();
+const clk=new THREE.Clock();
+function frame(){const t=clk.getElapsedTime(),P=window.P;
+ // rose idle motion fades as fall starts
+ const idle=Math.max(0,1-P*4);rose.g.rotation.y=t*.25*idle+P*1.5;rose.g.rotation.z=Math.sin(t*.7)*.04*idle;rose.g.position.y=Math.sin(t*.9)*.05*idle;
+ rose.g.updateMatrixWorld(true);
+ F.forEach(f=>{const u=THREE.MathUtils.clamp((P-f.t0)/(f.t1-f.t0),0,1);
+  if(u<=0){if(f.m.parent!==f.par){f.par.add(f.m);f.m.position.set(0,0,0);f.m.quaternion.identity()}return}
+  if(f.m.parent!==f.holder){f.holder.add(f.m);f.m.position.set(0,0,0);f.m.quaternion.identity()}
+  // start pose = current attached world pose
+  const s=new THREE.Vector3(),sq=new THREE.Quaternion(),ss=new THREE.Vector3();f.par.matrixWorld.decompose(s,sq,ss);
+  const e=u*u*(3-2*u),fall=u*u;// gravity-ish
+  const pos=new THREE.Vector3().lerpVectors(s,f.end,0);pos.x=s.x+(f.end.x-s.x)*e+f.drift.x*Math.sin(Math.PI*u);pos.z=s.z+(f.end.z-s.z)*e+f.drift.z*Math.sin(Math.PI*u);pos.y=s.y+(f.end.y-s.y)*fall;
+  f.holder.position.copy(pos);
+  tmpE.set(f.spin.x*u*(1-u)*2,f.spin.y*u*(1-u)*2,f.spin.z*u*(1-u)*2);tq.setFromEuler(tmpE);
+  f.holder.quaternion.slerpQuaternions(sq,f.qe,e).multiply(tq);f.holder.scale.copy(ss);f.holder.scale.z*=1-.6*e});
+ // camera: framing rose, then follow down to plate
+ const c=THREE.MathUtils.smoothstep(P,.1,.85);cam.position.set(Math.sin(c*.6)*1.5,1.0-c*3.2+c*1.2,7.5-c*2.2);cam.lookAt(0,1.0-c*4.1,0);
+ r.render(sc,cam);requestAnimationFrame(frame)}
+frame();window.GL_OK=true;window.dbgPlate=()=>F.filter(f=>f.m.parent===f.holder).map(f=>f.holder.position.y.toFixed(2));
+// pod customizer
+const c2=document.getElementById("gl2");const r2=new THREE.WebGLRenderer({canvas:c2,antialias:true,alpha:true});r2.toneMapping=THREE.ACESFilmicToneMapping;r2.outputColorSpace=THREE.SRGBColorSpace;
+const s2=new THREE.Scene();lights(s2);const cam2=new THREE.PerspectiveCamera(35,1,.1,50);cam2.position.set(0,.6,7);cam2.lookAt(0,0,0);
+let bq=new THREE.Group();s2.add(bq);let col=0xb0102a,cnt=1;
+function build(){s2.remove(bq);bq=new THREE.Group();const n=cnt;for(let i=0;i<n;i++){const ro=makeRose(col).g;const a=i/n*6.28,rr=n>1?.25+.2*Math.sqrt(i/n)*2:0;ro.position.set(Math.cos(a*2.4)*rr,(n>1?-.2:0)-(rr*.3),Math.sin(a*2.4)*rr);ro.rotation.set(Math.sin(a)*rr*.5,a,Math.cos(a)*rr*.5);ro.scale.setScalar(n>1?.75:1);bq.add(ro)}s2.add(bq);
+ total.textContent="€ "+({1:9,3:24,7:49,12:79}[cnt])}
+const cols=[["Rot",0xb0102a],["Rosé",0xe8a0a8],["Weiß",0xf3ece0],["Pfirsich",0xf2a07a],["Noir",0x4a0410]];
+sw.innerHTML=cols.map((c,i)=>`<button title="${c[0]}" data-c="${c[1]}" class="${i?"":"on"}" style="background:#${c[1].toString(16).padStart(6,"0")}"></button>`).join("");
+cnt.innerHTML!==undefined;document.getElementById("cnt").innerHTML=[1,3,7,12].map((n,i)=>`<button data-n="${n}" class="${i?"":"on"}">${n}</button>`).join("");
+sw.onclick=e=>{const b=e.target.closest("button");if(!b)return;sw.querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");col=+b.dataset.c;build()};
+document.getElementById("cnt").onclick=e=>{const b=e.target.closest("button");if(!b)return;document.getElementById("cnt").querySelectorAll("button").forEach(x=>x.classList.remove("on"));b.classList.add("on");cnt=+b.dataset.n;build()};
+build();
+function f2(){const w=c2.clientWidth;if(w&&c2.width!==w){r2.setSize(w,w,false)}bq.rotation.y+=.006;r2.render(s2,cam2);requestAnimationFrame(f2)}f2();
+}
+</script></body></html>
